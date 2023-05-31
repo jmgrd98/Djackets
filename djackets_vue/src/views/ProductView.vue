@@ -35,11 +35,30 @@ export default {
     name: 'ProductView',
     data() {
         return {
-            product: null,
+            product: {},
             loading: true,
             error: null,
             quantity: 1,
         }
     },
+    mounted(){
+        this.getProducts()
+    },
+    methods: {
+        getProducts() {
+            const category_slug = this.$route.params.category_slug
+            const product_slug = this.$route.params.product_slug
+
+            axios.get('/api/v1/products/' + category_slug + '/' + product_slug + '/')
+            .then(response => {
+                this.product = response.data;
+                this.loading = false;
+            })
+            .catch(error => {
+                this.error = error;
+                this.loading = false;
+            })
+        }
+    }
 }
 </script>
