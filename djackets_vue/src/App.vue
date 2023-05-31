@@ -3,15 +3,14 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/"><strong>Djackets</strong></router-link>
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-          data-target="navbarBasicExample">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu}">
         <div class="navbar-end">
           <router-link class="navbar-item" to="/summer">Summer</router-link>
           <router-link class="navbar-item" to="/winter">Winter</router-link>
@@ -44,3 +43,17 @@
 <style lang="scss">
 @import '../node_modules/bulma';
 </style>
+
+<script>
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      showMobileMenu: false,
+
+    }
+  }
+}
+
+</script>
