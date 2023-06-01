@@ -6,6 +6,11 @@
                     {{ category.name }}
                 </h2>
             </div>
+
+            <div class="column is-3"
+                v-for="product in category.products"
+                v-bind:key="product.id"
+            >
         </div>
     </div>
 </template>
@@ -45,7 +50,6 @@ export default {
                         dismissible: true,
                         pauseOnHover: true
                     })
-
                 })
 
             this.$store.commit('setIsLoading', false)
