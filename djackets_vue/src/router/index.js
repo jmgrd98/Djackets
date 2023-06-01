@@ -29,7 +29,7 @@ const routes = [
     component: CategoryView
   },
   {
-    path: '/search/:search_text',
+    path: '/search',
     name: 'Search',
     component: SearchView
   },
