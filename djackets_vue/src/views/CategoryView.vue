@@ -7,10 +7,7 @@
                 </h2>
             </div>
 
-            <div class="column is-3"
-                v-for="product in category.products"
-                v-bind:key="product.id"
-            >
+            <ProductBox v-for="product in category.products" v-bind:key="product.id" v-bind:product="product" />
         </div>
     </div>
 </template>
@@ -18,6 +15,7 @@
 <script>
 import axios from 'axios';
 import { toast } from 'bulma-toast';
+import ProductBox from '@/components/ProductBox.vue';
 
 export default {
     name: 'CategoryView',
@@ -27,6 +25,9 @@ export default {
                 products: []
             },
         }
+    },
+    components: {
+        ProductBox
     },
     mounted() {
         this.getCategory()
